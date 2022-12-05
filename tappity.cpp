@@ -42,10 +42,19 @@ double tappity::accuracy(){
   double max_len = ref_len;
   int min_len = in_len;
   int num_correct = 0;
+
   if(in_len > ref_len){
     max_len = in_len;
     min_len = ref_len;
   }
+
+  if(min_len == 0){
+    if(max_len != 0){
+      return double(0);
+    }
+    return double(100);
+  }
+
   for(auto i=0; i<min_len; i++){
     if(ref_str[i] == in_str[i]){
       num_correct++;
